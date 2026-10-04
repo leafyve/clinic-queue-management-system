@@ -12,6 +12,7 @@
 
 # testing
 /coverage
+/.local-verification/
 
 # next.js
 /.next/
@@ -32,6 +33,9 @@ yarn-error.log*
 
 # env files (can opt-in for committing if needed)
 .env*
+!.env.example
+/.staging-verification/
+/.playwright-mcp/
 
 # vercel
 .vercel
@@ -39,3 +43,34 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Supabase CLI runtime state (contains generated local API credentials)
+/supabase/.temp/
+/supabase/.branches/
+/supabase/.env*
+/supabase/signing_keys.json
+
+# Private credentials, browser sessions, dumps and restore artifacts
+**/identities.json
+**/credential-manifest*.json
+**/credentials*.json
+**/auth-state*.json
+**/storage-state*.json
+**/storageState*.json
+**/cookies*.json
+**/session*.json
+*.dump
+*.backup
+*.bak
+*.sqlite
+*.sqlite3
+**/*dump*.sql
+**/*restore*.sql
+/restore-artifacts/
+/backups/
+/browser-evidence/
+/screenshots/
+/test-results/
+/playwright-report/
+*.log
+/clinic-scaffold/

@@ -1,7 +1,10 @@
 import type { NextConfig } from "next";
+import { validateDeploymentEnvironment } from "./src/lib/environment";
+
+validateDeploymentEnvironment(process.env);
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  turbopack: { root: process.cwd() },
 };
 
 export default nextConfig;

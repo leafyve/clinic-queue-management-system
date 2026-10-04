@@ -1,0 +1,3 @@
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+export default function UnauthorizedPage() { return <section className="page-shell grid min-h-[65vh] place-items-center text-center"><div><p className="text-7xl font-heading font-semibold">403</p><h1 className="mt-3 text-3xl font-semibold">This workspace isn’t assigned to your account.</h1><p className="mx-auto mt-4 max-w-lg text-muted-foreground">Return to your dashboard or ask a clinic administrator to review your staff role.</p><Button className="mt-7" asChild><Link href="/">Return home</Link></Button></div></section>; }

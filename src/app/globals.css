@@ -1,26 +1,117 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:is(.dark *));
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-atkinson);
+  --font-heading: var(--font-newsreader);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+:root {
+  --background: #f8faf7;
+  --foreground: #12372d;
+  --card: #ffffff;
+  --card-foreground: #12372d;
+  --popover: #ffffff;
+  --popover-foreground: #12372d;
+  --primary: #137c6b;
+  --primary-foreground: #ffffff;
+  --secondary: #ddf0e8;
+  --secondary-foreground: #12372d;
+  --muted: #edf3ef;
+  --muted-foreground: #5d706a;
+  --accent: #ffe9e2;
+  --accent-foreground: #8b3325;
+  --destructive: #bd3f2f;
+  --border: #cfddd6;
+  --input: #bdcec6;
+  --ring: #137c6b;
+  --chart-1: #137c6b;
+  --chart-2: #69a897;
+  --chart-3: #e66a4e;
+  --chart-4: #f1bd64;
+  --chart-5: #325c73;
+  --radius: 0.8rem;
+  --sidebar: #12372d;
+  --sidebar-foreground: #ffffff;
+  --sidebar-primary: #bfe9da;
+  --sidebar-primary-foreground: #12372d;
+  --sidebar-accent: #255347;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: #3e675d;
+  --sidebar-ring: #bfe9da;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply font-sans bg-background text-foreground selection:bg-secondary;
+    min-height: 100vh;
+  }
+  html {
+    @apply font-sans;
+    scroll-behavior: smooth;
+  }
+  h1, h2, h3 {
+    font-family: var(--font-newsreader), Georgia, serif;
+    text-wrap: balance;
+  }
+  button, a, input, select, textarea {
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer utilities {
+  .page-shell { @apply mx-auto w-full max-w-[1180px] px-5 md:px-8; }
+  .surface { @apply rounded-[1.35rem] border border-border bg-card; }
+  .soft-grid {
+    background-image: linear-gradient(to right, color-mix(in srgb, #137c6b 8%, transparent) 1px, transparent 1px), linear-gradient(to bottom, color-mix(in srgb, #137c6b 8%, transparent) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
 }
+
+.skip-link { position: fixed; left: 1rem; top: -5rem; z-index: 100; background: #12372d; color: white; padding: .75rem 1rem; border-radius: .5rem; }
+.skip-link:focus { top: 1rem; }
+@media print { header, .no-print { display: none !important; } body { background: white; } }
